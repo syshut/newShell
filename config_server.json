@@ -7,7 +7,7 @@
     "rules": [
       {
         "inboundTag": [
-          "tunnel"
+          "tunnel-in"
         ],
         "domain": [
           "example.com"
@@ -16,7 +16,7 @@
       },
       {
         "inboundTag": [
-          "tunnel"
+          "tunnel-in"
         ],
         "outboundTag": "block"
       },
@@ -35,7 +35,7 @@
   },
   "inbounds": [
     {
-      "tag": "tunnel",
+      "tag": "tunnel-in",
       "listen": "0.0.0.0",
       "port": 80,
       "protocol": "tunnel",
