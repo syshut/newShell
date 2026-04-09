@@ -249,7 +249,7 @@ if [ "$CHOICE" -eq 1 ]; then
 	sudo sed -i 's/88888/'"$RPORT"'/g' "$NGINX_CONFIG_FILE"
 
 	# Step 4: 替换 server_name
-	sudo sed -i "s|\bh2y\.example\.com\b|${DOMAIN} www.${DOMAIN}|g" "$NGINX_CONFIG_FILE"
+	sudo sed -i "s|\bcdn\.example\.com\b|${DOMAIN} www.${DOMAIN}|g" "$NGINX_CONFIG_FILE"
 
 	# Step 5: 获取 /etc/nginx/conf.d/default.conf 中的 root 指令内容并替换
 	DEFAULT_CONF="/etc/nginx/conf.d/default.conf"
