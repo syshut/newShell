@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 设置虚拟内存
-curl -O https://raw.githubusercontent.com/syshut/newShell/refs/heads/main/create_swap.sh
+curl -O https://raw.githubusercontent.com/syshut/myShell/refs/heads/main/create_swap.sh
 chmod +x create_swap.sh && sudo ./create_swap.sh
 apt update && apt upgrade -y
 
@@ -276,7 +276,7 @@ if [ "$CHOICE" -eq 1 ]; then
 	sudo sed -i "s|^\(\s*ssl_certificate\s\+\)[^;]\+|\1/usr/local/etc/xray/ssl/${DOMAIN}.fullchain.cer|" "$NGINX_CONFIG_FILE"
 	sudo sed -i "s|^\(\s*ssl_certificate_key\s\+\)[^;]\+|\1/usr/local/etc/xray/ssl/${DOMAIN}.key|" "$NGINX_CONFIG_FILE"
 
-	curl -o "${NEW_ROOT}/index.html" https://raw.githubusercontent.com/syshut/newShell/refs/heads/main/netdisk.html
+	curl -o "${NEW_ROOT}/index.html" https://raw.githubusercontent.com/syshut/myShell/refs/heads/main/netdisk.html
 
 	# Step 7: 修改路径
 	sed -i 's|location /VLSpdG9k|location /'"$path"'|g' "$NGINX_CONFIG_FILE"
