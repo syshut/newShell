@@ -114,7 +114,7 @@ sed -i "s/\"id\": \".*\"/\"id\": \"$UUID\"/" "$CONFIG_FILE"
 
 # Step 6: inbounds 中 serverNames 域名
 # 修改 "port" 字段
-sed -i "s|\"h3a.example.com\"|${DOMAIN}|g" "${CONFIG_FILE}"
+sed -i "s|\"h3a.example.com\"|\"${DOMAIN}\"|g" "${CONFIG_FILE}"
 
 # Step 7: 修改 "target" 和 "serverNames" 中的域名
 if [ "$CHOICE" -eq 1 ]; then
