@@ -29,14 +29,14 @@ else
 fi
 
 # Step 1: 生成 uuid、key、shortid 到文件
-cd ${XRAY_CONFIG_DIR} || exit
+cd /usr/local/etc/xray/secrets || exit
 /usr/local/bin/xray uuid > uuid
-/usr/local/bin/xray uuid > uuid2
+/usr/local/bin/xray uuid > uuid1
 /usr/local/bin/xray x25519 > key
 openssl rand -hex 8 > sid
 
 # 检查文件是否成功生成
-if [ ! -s uuid ] || [ ! -s uuid2 ] || [ ! -s key ] || [ ! -s sid ]; then
+if [ ! -s uuid ] || [ ! -s uuid1 ] || [ ! -s key ] || [ ! -s sid ]; then
 	echo "生成 uuid、key 或 sid 失败！"
 	exit 1
 fi
@@ -110,7 +110,7 @@ sed -i "s|\"example\\.com\"|\"domain:${DOMAIN}\"|g" "${CONFIG_FILE}"
 sed -i "/\"inbounds\":/,/]/s/\"port\": 80/\"port\": $PORT/" "$CONFIG_FILE"
 
 # Step 5: 替换 "id" 字段
-sed -i "s/\"id\": \".*\"/\"id\": \"$UUID\"/" "$CONFIG_FILE"
+sed -i "s|drEwvgYhS15C|${UUID1}|" "$CONFIG_FILE"
 
 # Step 6: inbounds 中 serverNames 域名
 # 修改 "port" 字段
@@ -139,7 +139,7 @@ sed -i 's/"domainStrategy": "IPIfNonMatch"/"domainStrategy": "AsIs"/' "$CONFIG_F
 
 
 # Step 12: 替换 "id" 字段
-sed -i "s|af7d5cf8-442d-4bb3-8a76-eb367178781d|$UUID1|" "$CONFIG_FILE"
+sed -i "s|af7d5cf8-442d-4bb3-8a76-eb367178781d|${UUID}|" "$CONFIG_FILE"
 
 # Step 13: 拆分配置文件，生成不同部分的单独文件
 echo "正在拆分配置文件..."
