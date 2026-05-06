@@ -107,7 +107,7 @@ sed -i "s|\"example\\.com\"|\"domain:${DOMAIN}\"|g" "${CONFIG_FILE}"
 
 # Step 4: 修改配置文件
 # 修改 "port" 字段
-sed -i "/\"inbounds\":/,/]/s/\"port\": 80/\"port\": $RPORT/" "$CONFIG_FILE"
+sed -i "/\"inbounds\":/,/]/s/\"port\": 80/\"port\": $PORT/" "$CONFIG_FILE"
 
 # Step 5: 替换 "id" 字段
 sed -i "s|drEwvgYhS15C|${UUID1}|" "$CONFIG_FILE"
